@@ -1,0 +1,87 @@
+.addShow{
+
+    padding-left: 450px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+
+    .el-main{
+        background-color: #F7A208;
+        width: 50%;
+        border-radius: 10px;
+        display: grid;
+    }
+
+    .el-form{
+        // padding: 50px;
+        // padding-left: 100px;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 20px;
+    }
+
+    .el-form-item{
+        padding-bottom: 5px;
+    }
+
+    .el-form-item__label-wrap{
+        padding-bottom: 5px;
+    }
+
+    .el-form-item__label{
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+    .el-input__inner{
+        border-width: 0;
+        border-radius: 5px;
+        height: 30px;
+        
+    }
+
+    .el-input__inner:focus{
+        outline: none;
+    }
+
+    .el-textarea__inner{
+        border-width: 0;
+        border-radius: 5px;
+        height: 100px;
+        width: 300px;
+    }
+
+    .el-textarea__inner:focus{
+        outline: none;
+    }
+
+    .el-button{
+        background-color: white;
+        border-width: 0;
+        border-radius: 8px;
+        padding-left: 15px;
+        padding-right: 15px;
+        cursor: pointer;
+        font-family: Arial, Helvetica, sans-serif;
+        // display: flex;
+    }
+
+    .el-button:hover{
+        color: #F7A208;
+    }
+
+    // This id is for image url input
+    #el-id-4161-20{
+        width: 300px;
+    }
+
+    // This id is for description input
+    // #el-id-4161-21{
+    //     width: 500px;
+    //     height: 140px;
+    // }
+
+    // #el-id-4161-21::placeholder{
+    //     font-size: 20px;
+    //     padding-bottom: 20px;
+    // }
+}

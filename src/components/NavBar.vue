@@ -1,7 +1,10 @@
 <script setup>
-import { ElHeader } from 'element-plus';
+import { ElHeader,
+     ElDropdownMenu, 
+     ElDropdownItem,
+     ElDropdown,
+    } from 'element-plus';
 import MenuIcon from '@/components/icons/MenuIcon.vue';
-// import { Menu } from '@element-plus/icons-vue/dist/types';
 
  defineProps({
     pageName:{
@@ -9,15 +12,33 @@ import MenuIcon from '@/components/icons/MenuIcon.vue';
         default: 'Home'
     }
 });
+
+const goToDashboard = () => {
+    window.location.href = '/';
+}
 </script>
 
 
 <template>
     <ElHeader class="navbar">
-        <h1 class="navbar__Logo"> Movie Checkr  </h1>
-        <h1 class="navbar__pageName">{{ pageName }}</h1>
-        <MenuIcon class="navbar__menu-button"/>
-        <!-- <ElButton class="navbar__menu-button" type="warning"><MenuIcon /></ElButton> -->
-        <!-- <el-button type="primary" :icon="MenuIcon" /> -->
+        <div class="navbar__container">
+            <h1 class="navbar__Logo" @click="goToDashboard"> <a href="/" > Movie Checkr </a>  </h1>
+            <h1 class="navbar__pageName"> {{ pageName }}</h1>
+            
+                <el-dropdown>
+                    <button class="navbar__menu-button">
+                        <MenuIcon />
+                    </button>
+                    <template #dropdown>
+                    <el-dropdown-menu>
+                        <el-dropdown-item> <a href="/" target="_blank">Home</a></el-dropdown-item>
+                        <el-dropdown-item><a href="/shows"> Shows</a></el-dropdown-item>
+                        <el-dropdown-item><a href="/genre"> Genre</a></el-dropdown-item>
+                        <el-dropdown-item> <a href="/country"> Country</a></el-dropdown-item>
+                        <el-dropdown-item> <a href="/add-show"> Add Shows</a></el-dropdown-item>
+                    </el-dropdown-menu>
+                    </template>
+                </el-dropdown>
+        </div>
     </ElHeader>
 </template>
