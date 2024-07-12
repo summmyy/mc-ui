@@ -1,6 +1,6 @@
 <script setup>
 // import {ElMain} from 'element-plus'
-// import { ref } from 'vue';
+import { ref } from 'vue';
 // import {ElInput} from 'element-plus'
 // import {Search} from '@element-plus/icons-vue'
 import SearchIcon from '@/components/icons/SearchIcon.vue'
@@ -14,8 +14,14 @@ defineProps({
     getSearchResult: {
         type: Function,
         default: () => {}
-    }
+    },
+    searchInput: {
+        type: String,
+        default: ''
+    },
 })
+
+
 
 
 </script>
@@ -26,7 +32,7 @@ defineProps({
             <h2> Search: </h2>
             <div class="search-bar__container">
                 <SearchIcon class="search-bar__icon"/>
-                <input type="text" class="search-bar__input" :placeholder=placeHolderMessage >
+                <input :v-model="searchInput" type="text" @keyup.enter="getSearchResult" class="search-bar__input" :placeholder=placeHolderMessage >
                 <div class="search-bar__button-container">
                     <el-button class="search-bar__button" @click="getSearchResult"> Enter </el-button>
                 </div>

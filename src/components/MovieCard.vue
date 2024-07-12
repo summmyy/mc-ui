@@ -10,6 +10,10 @@ defineProps({
         type: String,
         default: 'Action'
     },
+    showType: {
+        type: String,
+        default: 'Movie'
+    },
     duration: {
         type: String,
         default: '110'
@@ -26,42 +30,14 @@ defineProps({
 </script>
 
 <template>
-    <el-main>
         <el-card>
-            <el-image :src="imgSrc" alt="Movie Poster" />
+            <el-image :src="imgSrc" alt="Movie Poster" width="300px" height="450px" />
             <div>
                 <h4>Title: {{ title }} </h4>
                 <h4>Genre: {{ genre }}</h4>
+                <h4>Show Type: {{ showType }}</h4>
                 <h4>Duration: {{ duration }} mins</h4>
                 <h4>Description: {{ description }}</h4>
             </div>
         </el-card>
-        <el-card>
-            <el-image :src="imgSrc" alt="Movie Poster" />
-            <div>
-                <h4>Title: {{ title }} </h4>
-                <h4>Genre: {{ genre }}</h4>
-                <h4>Duration: {{ duration }} mins</h4>
-                <h4>Description: {{ description }}</h4>
-            </div>
-        </el-card>
-        <el-card>
-            <el-image :src="imgSrc" alt="Movie Poster" />
-            <div>
-                <h4>Title: {{ title }} </h4>
-                <h4>Genre: {{ genre }}</h4>
-                <h4>Duration: {{ duration }} mins</h4>
-                <h4>Description: {{ description }}</h4>
-            </div>
-        </el-card>
-        <el-card>
-            <el-image :src="imgSrc" alt="Movie Poster" />
-            <div>
-                <h4>Title: {{ title }} </h4>
-                <h4>Genre: {{ genre }}</h4>
-                <h4>Duration: {{ duration }} mins</h4>
-                <h4>Description: {{ description }}</h4>
-            </div>
-        </el-card>
-    </el-main>
 </template>
