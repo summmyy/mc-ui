@@ -15,6 +15,8 @@ const show = reactive({
 });
 
 const handlesubmit = () => {
+    // post request to the API to add a show goes here
+    console.log('Show Added Successfully!');
     console.log(show);
     alert('Show Added Successfully! \nThank you for your contribution!');
     show.name = '';

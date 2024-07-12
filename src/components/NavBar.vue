@@ -31,11 +31,11 @@ const goToDashboard = () => {
                     </button>
                     <template #dropdown>
                     <el-dropdown-menu>
-                        <el-dropdown-item> <a href="/" target="_blank">Home</a></el-dropdown-item>
-                        <el-dropdown-item><a href="/shows"> Shows</a></el-dropdown-item>
-                        <el-dropdown-item><a href="/genre"> Genre</a></el-dropdown-item>
-                        <el-dropdown-item> <a href="/country"> Country</a></el-dropdown-item>
-                        <el-dropdown-item> <a href="/add-show"> Add Shows</a></el-dropdown-item>
+                        <el-dropdown-item> <a href="/"> Home </a></el-dropdown-item>
+                        <el-dropdown-item><a href="/shows"> Shows </a></el-dropdown-item>
+                        <el-dropdown-item><a href="/genre"> Genre </a></el-dropdown-item>
+                        <el-dropdown-item> <a href="/country"> Country </a></el-dropdown-item>
+                        <el-dropdown-item> <a href="/add-show"> Add Shows </a></el-dropdown-item>
                     </el-dropdown-menu>
                     </template>
                 </el-dropdown>
