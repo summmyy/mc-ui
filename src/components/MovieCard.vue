@@ -1,5 +1,5 @@
 <script setup>
-import {ElMain ,ElCard, ElImage } from 'element-plus';
+import {ElCard, ElImage } from 'element-plus';
 
 defineProps({
     title: {
