@@ -12,7 +12,6 @@ defineProps({
     type: Function,
     default: () => {}
   },
-  searchInput: String,
 });
 
 const localSearchInput = ref('');

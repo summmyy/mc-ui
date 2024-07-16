@@ -16,7 +16,7 @@ watch(title, (newTitle) => {
 
 const getShowsByTitle = async (searchTitle) => {
   try {
-    const url = `http://localhost:8080/api/shows/title/${searchTitle}`;
+    const url = `http://localhost:8080/api/shows/search/${searchTitle}`;
     const response = await axios.get(url);
     shows.value = response.data;
     console.log(response.data); // For testing purposes
