@@ -1,5 +1,6 @@
 <script setup>
 import {ElCard, ElImage } from 'element-plus';
+import { ref, defineProps } from 'vue'; 
 
 defineProps({
     title: {
@@ -15,8 +16,8 @@ defineProps({
         default: 'Movie'
     },
     duration: {
-        type: String,
-        default: '110'
+        type: Number,
+        default: 110
     },
     description: {
         type: String,
@@ -27,17 +28,31 @@ defineProps({
         default: 'https://via.placeholder.com/300'
     },
 })
+
+const showDetails = ref(false);
 </script>
 
 <template>
-        <el-card>
-            <el-image :src="imgSrc" alt="Movie Poster" width="300px" height="450px" />
-            <div>
-                <h4>Title: {{ title }} </h4>
-                <h4>Genre: {{ genre }}</h4>
+    <div class="movie-card">
+        <el-card @mouseenter="showDetails = true" @mouseleave="showDetails = false" >
+            <div class="movie-card__wrapper">
+                <el-image :src="imgSrc" alt="Movie Poster" width="300px" height="400px" />
+                <div class="movie-card__details" :class="{'movie-card__show-details' : showDetails}" >
                 <h4>Show Type: {{ showType }}</h4>
                 <h4>Duration: {{ duration }} mins</h4>
                 <h4>Description: {{ description }}</h4>
             </div>
+            </div>
+            <div class="movie-card__title">
+                <h4> {{ title }} </h4>
+                <h4> {{ genre }}</h4>
+            </div>
+            <!-- <div class="movie-card__details" :class="{'movie-card__show-details' : showDetails}" >
+                <h4>Show Type: {{ showType }}</h4>
+                <h4>Duration: {{ duration }} mins</h4>
+                <h4>Description: {{ description }}</h4>
+            </div> -->
+            
         </el-card>
+    </div>
 </template>

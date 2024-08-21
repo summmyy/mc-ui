@@ -1,20 +1,22 @@
 
 .search{
     display: flex;
-    padding: 80px;
+    // padding: 80px;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
+    padding-left: 900px;
+    padding-top: 10px;
+    width: 27vw;
 
 }
 .search-bar{
     display: block;
-    background-color: #F7A208;
-    padding: 30px;
-    padding-top: 5px;
+    background-color: #00549A;
+    padding: 10px;
     align-items: center;
     justify-content: center;
-    width: 50%;
-    border-radius: 8px;
+    width: 25vw;
+    border-radius: 5px;
 
     &__container{
         display: flex;
@@ -27,7 +29,7 @@
     &__input{
         display: flex;
         width: 90%;
-        height: 60px;
+        height: 30px;
         border: 0;
         padding-left: 10px;
         font-size: large;
@@ -49,10 +51,11 @@
 
     &__button{
         display: grid;
-        padding: 12px;
+        padding: 5px;
         border-radius: 8px;
         border-width: 0;
-        background-color: #F7A208;
+        background-color: #00549A;
         cursor: pointer;
+        color: white;
     }
 }

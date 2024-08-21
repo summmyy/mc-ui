@@ -1,8 +1,49 @@
+.movie-card{
+    padding: 20px;
+
+    &__title{
+        display: flex;
+        justify-content: space-between;
+        color: white;
+    }
+
+    &__wrapper{
+       position: relative;
+    }
+
+    &__details{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 98%;
+        height: 99%;
+        background-color: rgba(0, 0, 0, 0.7);
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        // align-items: center;
+        color: white;
+        opacity: 0;
+        transition: opacity 0.3s;
+        padding-left: 6px;
+    }
+}
+
+
 .el-card{
-    background-color: #F7A208;
+    background-color: #00549A;
     width: 300px;
-    padding: 30px;
+    padding: 10px;
     justify-content: center;
     border-radius: 10px;
+    box-shadow: -5px 5px 4px rgba(0, 0, 0, 0.25);
 
+    &:hover{
+        
+        .movie-card__show-details{
+            opacity: 1;
+        }
+    }
 }
+
+

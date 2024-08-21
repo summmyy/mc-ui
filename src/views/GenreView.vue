@@ -2,13 +2,17 @@
 
 import NavBar from '@/components/NavBar.vue';
 import SearchBar from '@/components/SearchBar.vue';
+import ScrollWheel from '@/components/ScrollWheel.vue';
 import MovieCard from '@/components/MovieCard.vue';
-import {ref, watch} from 'vue';
+import {ref, watch, onMounted} from 'vue';
 import axios from 'axios';
-import { ElMain } from 'element-plus';
+
 
 const shows = ref([]);
 const genre = ref('');
+const genres = ref([]);
+const token = ref(localStorage.getItem('authToken'));
+
 
 watch(genre, (newTitle) => {
   getShowsByGenre(newTitle);
@@ -18,27 +22,63 @@ watch(genre, (newTitle) => {
 const getShowsByGenre = async (genreName) => {
   try {
     const url = `http://localhost:8080/api/shows/genre/${genreName}`;
-    const response = await axios.get(url);
+    const response = await axios.get(url, {
+      headers: {
+        'Authorization': `Bearer ${token.value}`,
+      },
+  });
     shows.value = response.data;
     console.log(response.data); // For testing purposes
   } catch (error) {
     console.error('Oops, an unexpected error occurred:', error);
   }
 };
+
+const getGenre = async () => {
+  try {
+    const url = `http://localhost:8080/api/shows/genre/all`;
+    const response = await axios.get(url, {
+      headers: {
+        'Authorization': `Bearer ${token.value}`,
+      },
+    });
+    genres.value = response.data;
+    console.log(response.data); // For testing purposes
+  } catch (error) {
+    console.error('Oops, an unexpected error occurred:', error);
+  }
+}
+
+onMounted(() => {
+  getGenre();
+});
 </script>
 
 <template>
-    <NavBar pageName="Genre" />
-    <SearchBar :getSearchResult="getShowsByGenre" v-model:searchInput="genre"/>
-    <el-main>
-        <MovieCard
-            v-for="show in shows" :key="show.id"
-            :title="show.title"
-            :genre="show.genre"
-            :showType="show.showType"
-            :duration="show.duration"
-            :description="show.description"
-            :imgSrc="show.showPosterUrl"
+    <div class="genreView">
+      <NavBar pageName="Genre" />
+    <div class="genreView__content">
+      <div class="genreView__header">
+        <h1> Genre </h1>
+        <SearchBar :getSearchResult="getShowsByGenre" v-model:searchInput="genre" />
+      </div>
+      <div class="genreView__scrollwheel">
+        <ScrollWheel @click="getShowsByGenre(items)" 
+        v-for="items in genres" :key="items"
+        :item="items"
         />
-    </el-main>
+      </div>
+      <div class="genreView__shows">
+        <MovieCard 
+              v-for="showData in shows" :key="showData.id"
+              :title="showData.title"
+              :genre="showData.genre"
+              :showType="showData.showType"
+              :duration="showData.duration"
+              :description="showData.description"
+              :imgSrc="showData.showPosterUrl"
+        />
+      </div>
+    </div>
+  </div>
 </template>

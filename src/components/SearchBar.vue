@@ -25,7 +25,7 @@ watch(() => localSearchInput.value, (newVal) => {
 <template>
   <div class="search">
     <div class="search-bar">
-      <h2> Search: </h2>
+      <!-- <h2> Search: </h2> -->
       <div class="search-bar__container">
         <SearchIcon class="search-bar__icon" />
         <input v-model="localSearchInput" @change="$emit('update:searchInput', localSearchInput)" type="text" @keyup.enter="getSearchResult(localSearchInput)" class="search-bar__input" :placeholder="placeHolderMessage" />

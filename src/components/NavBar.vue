@@ -1,10 +1,11 @@
 <script setup>
-import { ElHeader,
-     ElDropdownMenu, 
-     ElDropdownItem,
-     ElDropdown,
-    } from 'element-plus';
-import MenuIcon from '@/components/icons/MenuIcon.vue';
+// import { ElHeader,
+//      ElDropdownMenu, 
+//      ElDropdownItem,
+//      ElDropdown,
+//     } from 'element-plus';
+import { ElHeader } from 'element-plus';
+// import MenuIcon from '@/components/icons/MenuIcon.vue';
 
  defineProps({
     pageName:{
@@ -24,8 +25,12 @@ const goToDashboard = () => {
         <div class="navbar__container">
             <h1 class="navbar__Logo" @click="goToDashboard"> <a href="/" > Movie Checkr </a>  </h1>
             <h1 class="navbar__pageName"> {{ pageName }}</h1>
+            <h3> <a href="/shows" > Shows </a>  </h3>
+            <h3> <a href="/genre" > Genre </a>  </h3>
+            <h3> <a href="/country" > Country </a>  </h3>
+            <h3> <a href="/add-show" > Add Shows </a>  </h3>
             
-                <el-dropdown>
+                <!-- <el-dropdown>
                     <button class="navbar__menu-button">
                         <MenuIcon />
                     </button>
@@ -38,7 +43,7 @@ const goToDashboard = () => {
                         <el-dropdown-item> <a href="/add-show"> Add Shows </a></el-dropdown-item>
                     </el-dropdown-menu>
                     </template>
-                </el-dropdown>
+                </el-dropdown> -->
         </div>
     </ElHeader>
 </template>

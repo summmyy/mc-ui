@@ -1,0 +1,19 @@
+{
+    "apiEndPoints" : {
+        "shows" : {
+            "getShowsByTitle" : "http://localhost:8080/api/shows/search/${searchTitle}"
+        },
+        "genres" : {
+
+        },
+        "country" : {
+
+        },
+        "add-show": {
+
+        }
+    },
+    "apiKeys" : {
+        "token" : "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJqZG9lIiwiaWF0IjoxNzIzNTY5OTUyLCJleHAiOjE3MjM2NTYzNTJ9.ag1tqd4Xt3fGD_tFt9klfesTR5wmrNaLl0A_FMuoN1wIYXhDO6fXTCD5BLwm4eXH"
+    }
+}

@@ -2,13 +2,16 @@
 
 import NavBar from '@/components/NavBar.vue';
 import SearchBar from '@/components/SearchBar.vue';
+import ScrollWheel from '@/components/ScrollWheel.vue';
 import MovieCard from '@/components/MovieCard.vue';
-import {ref, watch} from 'vue';
+import {onMounted, ref, watch} from 'vue';
 import axios from 'axios';
-import { ElMain } from 'element-plus';
+// import { ElMain } from 'element-plus';
 
 const shows = ref([]);
+const countries = ref([]);
 const country = ref('');
+const token = ref(localStorage.getItem('authToken'));
 
 watch(country, (newTitle) => {
   getShowsByCountry(newTitle);
@@ -18,7 +21,12 @@ watch(country, (newTitle) => {
 const getShowsByCountry = async (countryName) => {
   try {
     const url = `http://localhost:8080/api/shows/country/${countryName}`;
-    const response = await axios.get(url);
+    const response = await axios.get(url, {
+        headers : {
+          'Authorization': `Bearer ${token.value}`,
+        },
+      }
+    );
     shows.value = response.data;
     console.log(response.data); // For testing purposes
   } catch (error) {
@@ -26,20 +34,52 @@ const getShowsByCountry = async (countryName) => {
   }
 };
 
+const getCountry = async () => {
+  try {
+    const url = `http://localhost:8080/api/shows/country/all`;
+    const response = await axios.get(url, {
+      headers: {
+        'Authorization': `Bearer ${token.value}`,
+      },
+    });
+    countries.value = response.data;
+    console.log(response.data); // For testing purposes
+  } catch (error) {
+    console.error('Oops, an unexpected error occurred:', error);
+  }
+}
+
+onMounted(() => {
+  getCountry();
+});
+
 </script>
 
 <template>
-    <NavBar pageName="Country" />
-    <SearchBar :getSearchResult="getShowsByCountry" v-model:searchInput="country" />
-    <el-main>
-        <MovieCard
-            v-for="show in shows" :key="show.id"
-            :title="show.title"
-            :genre="show.genre"
-            :showType="show.showType"
-            :duration="show.duration"
-            :description="show.description"
-            :imgSrc="show.showPosterUrl"
+    <div class="countryView">
+      <NavBar pageName="Country" />
+    <div class="countryView__content">
+      <div class="countryView__header">
+        <h1> Country </h1>
+        <SearchBar :getSearchResult="getShowsByCountry" v-model:searchInput="country" />
+      </div>
+      <div class="countryView__scrollwheel">
+        <ScrollWheel @click = "getShowsByCountry(country)" 
+        v-for="country in countries" :key="country"
+        :item="country"
         />
-    </el-main>
+      </div>
+      <div class="countryView__shows">
+        <MovieCard
+          v-for="showData in shows" :key="showData.id"
+          :title="showData.title"
+          :genre="showData.genre"
+          :showType="showData.showType"
+          :duration="showData.duration"
+          :description="showData.description"
+          :imgSrc="showData.showPosterUrl"
+        />
+      </div>
+    </div>
+  </div>
 </template>

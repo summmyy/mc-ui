@@ -3,7 +3,12 @@
 @use 'searchBar.scss';
 @use 'dashboardView.scss';
 @use 'showsView.scss';
+@use 'genreView.scss';
+@use 'countryView.scss';
 @use 'addShowView.scss';
+@use 'scrollWheel.scss';
+@use 'signInView.scss';
+@use 'signUpView.scss';
 
 body{
     margin: 0;
