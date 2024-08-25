@@ -88,4 +88,27 @@
         align-items: center;
         padding-top: 100px;
     }
+
+    &__buttons{
+        display: flex;
+        justify-content: space-evenly;
+        padding-left: 125px;
+        padding-right: 100px;
+        width: 15%;
+    }
+
+    .el-button{
+        width: 95px;
+        padding: 5px;
+        background-color: #00549A;
+        color: white;
+        font-weight: 600;
+        border-radius: 10px;
+        cursor: pointer;
+
+        &:hover{
+            background-color: white;
+            color: #00549A;
+        }
+    }
 }
